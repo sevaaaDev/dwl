@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=dwl
 Comment=dwm for Wayland
-Exec=dwl -s somebar
+Exec=dwl -s "/home/seva/.config/dwl/autostart"
 Type=Application

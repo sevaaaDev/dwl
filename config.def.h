@@ -128,6 +128,11 @@ static const char *menucmd[] = { "rofi","-show", NULL };
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
+	{ 0,                    XKB_KEY_XF86AudioRaiseVolume, spawn, SHCMD("/home/seva/.local/bin/volume up")},
+	{ 0,                    XKB_KEY_XF86AudioLowerVolume, spawn, SHCMD("/home/seva/.local/bin/volume down")},
+	{ 0,                    XKB_KEY_XF86AudioMute, spawn, SHCMD("/home/seva/.local/bin/volume mute")},
+	{ 0,                    XKB_KEY_XF86MonBrightnessUp, spawn, SHCMD("/home/seva/.local/bin/brightness up")},
+	{ 0,                    XKB_KEY_XF86MonBrightnessDown, spawn, SHCMD("/home/seva/.local/bin/brightness down")},
 	{ MODKEY,                    XKB_KEY_space,      spawn,          {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },

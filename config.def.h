@@ -112,11 +112,12 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* If you want to use the windows key for MODKEY, use WLR_MODIFIER_LOGO */
 #define MODKEY WLR_MODIFIER_LOGO
 
+/* swapped the key to skey, BUT U MIGHT WANT TO SWAP THE ARGUMENT INSTEAD */
 #define TAGKEYS(KEY,SKEY,TAG) \
-	{ MODKEY,                    KEY,            view,            {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_CTRL,  KEY,            toggleview,      {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_SHIFT, SKEY,           tag,             {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT,SKEY,toggletag, {.ui = 1 << TAG} }
+	{ MODKEY,                    SKEY,            view,            {.ui = 1 << TAG} }, \
+	{ MODKEY|WLR_MODIFIER_CTRL,  SKEY,            toggleview,      {.ui = 1 << TAG} }, \
+	{ MODKEY|WLR_MODIFIER_SHIFT, KEY,           tag,             {.ui = 1 << TAG} }, \
+	{ MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT,KEY,toggletag, {.ui = 1 << TAG} }
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -128,11 +129,11 @@ static const char *menucmd[] = { "rofi","-show", NULL };
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
-	{ 0,                    XKB_KEY_XF86AudioRaiseVolume, spawn, SHCMD("/home/seva/.local/bin/volume up")},
-	{ 0,                    XKB_KEY_XF86AudioLowerVolume, spawn, SHCMD("/home/seva/.local/bin/volume down")},
-	{ 0,                    XKB_KEY_XF86AudioMute, spawn, SHCMD("/home/seva/.local/bin/volume mute")},
-	{ 0,                    XKB_KEY_XF86MonBrightnessUp, spawn, SHCMD("/home/seva/.local/bin/brightness up")},
-	{ 0,                    XKB_KEY_XF86MonBrightnessDown, spawn, SHCMD("/home/seva/.local/bin/brightness down")},
+	{ 0,                         XKB_KEY_XF86AudioRaiseVolume, spawn, SHCMD("/home/seva/.local/bin/volume up")},
+	{ 0,                         XKB_KEY_XF86AudioLowerVolume, spawn, SHCMD("/home/seva/.local/bin/volume down")},
+	{ 0,                         XKB_KEY_XF86AudioMute, spawn, SHCMD("/home/seva/.local/bin/volume mute")},
+	{ 0,                         XKB_KEY_XF86MonBrightnessUp, spawn, SHCMD("/home/seva/.local/bin/brightness up")},
+	{ 0,                         XKB_KEY_XF86MonBrightnessDown, spawn, SHCMD("/home/seva/.local/bin/brightness down")},
 	{ MODKEY,                    XKB_KEY_space,      spawn,          {.v = menucmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },

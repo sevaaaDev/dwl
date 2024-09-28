@@ -153,6 +153,7 @@ static const Key keys[] = {
 	{ MODKEY,                    Key_m,          setlayout,      {.v = &layouts[2]} },
 	/*{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },*/
 	{ MODKEY,           		     Key_apostrophe, toggledimming,  {0} },
+	{ MODKEY,           		     Key_b,          spawn,  SHCMD("/home/seva/.local/bin/systatus") },
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_space,      togglefloating, {0} },
 	{ MODKEY,                    Key_e,          togglefullscreen, {0} },
 	{ MODKEY,                    Key_0,          view,           {.ui = ~0} },

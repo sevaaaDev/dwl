@@ -24,11 +24,12 @@ static int log_level = WLR_ERROR;
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
 static const Rule rules[] = {
-	/* app_id     title       tags mask     isfloating   neverdim      monitor */
+	/* app_id           title       tags mask     isfloating   neverdim      monitor */
 	/* examples:
 	{ "Gimp_example",     NULL,       0,            1,           0,            -1 },
 	*/
 	{ "firefox_example",  NULL,       1 << 8,       0,           1,		   -1 },
+	{ "launcher_term",  NULL,       0,       1,           1,		   -1 },
 };
 
 /* layout(s) */

@@ -24,7 +24,7 @@ static int log_level = WLR_ERROR;
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
 static const Rule rules[] = {
-	/* app_id           title       tags mask     isfloating   neverdim      monitor */
+	/* app_id     title       tags mask     isfloating   neverdim      monitor */
 	/* examples:
 	{ "Gimp_example",     NULL,       0,            1,           0,            -1 },
 	*/
@@ -115,17 +115,17 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* swapped the key to skey, BUT U MIGHT WANT TO SWAP THE ARGUMENT INSTEAD */
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                    KEY,            view,            {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_CTRL,  KEY,            toggleview,      {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_SHIFT, KEY,           tag,             {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT,KEY,toggletag, {.ui = 1 << TAG} }
+	{ MODKEY,                                             KEY,        view,           {.ui = 1 << TAG} }, \
+	{ MODKEY|WLR_MODIFIER_CTRL,                           KEY,        toggleview,     {.ui = 1 << TAG} }, \
+	{ MODKEY|WLR_MODIFIER_SHIFT,                          KEY,        tag,            {.ui = 1 << TAG} }, \
+	{ MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT,        KEY,        toggletag,      {.ui = 1 << TAG} }
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static const char *termcmd[] = { "wezterm", NULL };
-static const char *menucmd[] = { "rofi","-show", NULL };
+static const char *menucmd[] = { "foot", "--app-id","launcher_term", "-W", "70x20","-e","sway-launcher-desktop",NULL };
 
 #include "keys.h"
 static const Key keys[] = {
@@ -163,15 +163,15 @@ static const Key keys[] = {
 	{ MODKEY,                    Key_period,     focusmon,       {.i = WLR_DIRECTION_RIGHT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_less,       tagmon,         {.i = WLR_DIRECTION_LEFT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_greater,    tagmon,         {.i = WLR_DIRECTION_RIGHT} },
-	TAGKEYS(          Key_1,                      0),
-	TAGKEYS(          Key_2,                          1),
-	TAGKEYS(          Key_3,                  2),
-	TAGKEYS(          Key_4,                      3),
-	TAGKEYS(          Key_5,                     4),
-	TAGKEYS(          Key_6,                 5),
-	TAGKEYS(          Key_7,                   6),
-	TAGKEYS(          Key_8,                    7),
-	TAGKEYS(          Key_9,                   8),
+	TAGKEYS(          Key_1,     0),
+	TAGKEYS(          Key_2,     1),
+	TAGKEYS(          Key_3,     2),
+	TAGKEYS(          Key_4,     3),
+	TAGKEYS(          Key_5,     4),
+	TAGKEYS(          Key_6,     5),
+	TAGKEYS(          Key_7,     6),
+	TAGKEYS(          Key_8,     7),
+	TAGKEYS(          Key_9,     8),
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_e,          quit,           {0} },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */

@@ -11,7 +11,7 @@ static const int draw_minimal_borders      = 1; /* merge adjacent borders */
 static const float rootcolor[]             = COLOR(0x222222ff);
 static const float bordercolor[]           = COLOR(0x444444ff);
 static const float focuscolor[]            = COLOR(0x005577ff);
-static const float unfocuseddim[]            = COLOR(0x00000088);
+static const float unfocuseddim[]          = COLOR(0x00000088);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
@@ -113,7 +113,6 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* If you want to use the windows key for MODKEY, use WLR_MODIFIER_LOGO */
 #define MODKEY WLR_MODIFIER_LOGO
 
-/* swapped the key to skey, BUT U MIGHT WANT TO SWAP THE ARGUMENT INSTEAD */
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                                             KEY,        view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|WLR_MODIFIER_CTRL,                           KEY,        toggleview,     {.ui = 1 << TAG} }, \
@@ -125,7 +124,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "wezterm", NULL };
-static const char *menucmd[] = { "foot", "--app-id","launcher_term", "-W", "70x20","-e","sway-launcher-desktop",NULL };
+static const char *menucmd[] = { "rofi", "-show", "drun", NULL};
 
 #include "keys.h"
 static const Key keys[] = {
@@ -136,7 +135,7 @@ static const Key keys[] = {
 	{ 0,                         Key_XF86AudioMute, spawn, SHCMD("/home/seva/.local/bin/volume mute")},
 	{ 0,                         Key_XF86MonBrightnessUp, spawn, SHCMD("/home/seva/.local/bin/brightness up")},
 	{ 0,                         Key_XF86MonBrightnessDown, spawn, SHCMD("/home/seva/.local/bin/brightness down")},
-	{ MODKEY,                    Key_space,      spawn,          {.v = menucmd} },
+	{ MODKEY,                    Key_p,          spawn,          {.v = menucmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    Key_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    Key_k,          focusstack,     {.i = -1} },
@@ -146,6 +145,9 @@ static const Key keys[] = {
 	{ MODKEY,                    Key_d,          incnmaster,     {.i = -1} },
 	{ MODKEY,                    Key_h,          setmfact,       {.f = -0.05f} },
 	{ MODKEY,                    Key_l,          setmfact,       {.f = +0.05f} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, Key_h,          setcfact,       {.f = +0.25f} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, Key_l,          setcfact,       {.f = -0.25f} },
+	{ MODKEY,                    Key_space,      setcfact,       {.f = 0.0f} },
 	{ MODKEY,                    Key_Return,     zoom,           {0} },
 	{ MODKEY,                    Key_Tab,        view,           {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_q,          killclient,     {0} },

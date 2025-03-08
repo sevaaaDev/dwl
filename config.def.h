@@ -45,6 +45,8 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "TTT",      bstack },
+	{ "===",      bstackhoriz },
 };
 
 /* monitors */
@@ -165,6 +167,8 @@ static const Key keys[] = {
 	{ MODKEY,                    Key_t,          setlayout,        {.v = &layouts[0]} },
 	{ MODKEY,                    Key_f,          setlayout,        {.v = &layouts[1]} },
 	{ MODKEY,                    Key_m,          setlayout,        {.v = &layouts[2]} },
+	{ MODKEY,                    Key_u,          setlayout,        {.v = &layouts[3]} },
+	{ MODKEY,                    Key_o,          setlayout,        {.v = &layouts[4]} },
 	/*{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },*/
 	{ MODKEY,           		     Key_apostrophe, toggledimming,    {0} },
 	{ MODKEY,           		     Key_b,          spawn,            SHCMD("/home/seva/.local/bin/systatus") },
